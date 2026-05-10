@@ -1,4 +1,4 @@
-* [🏠 Home](docs/README.md)
+* [🏠 Home](README.md)
 
 ---
 

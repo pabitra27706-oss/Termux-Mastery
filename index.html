@@ -10,52 +10,23 @@
   <div id="app"></div>
   
   <script>
-    console.log('🔧 Docsify Config Loading...');
-    
     window.$docsify = {
       name: 'Termux-Mastery',
       repo: 'https://github.com/pabitra27706-oss/Termux-Mastery',
       
-      // This tells Docsify to look one level up (in root folder)
-      basePath: '../',
-      
-      // Use custom sidebar
+      // All files are in the same directory as index.html (root)
       loadSidebar: true,
-      
-      // Use cover page
       coverpage: true,
-      
-      // Home page is the root README.md
-      homepage: 'docs/README.md',
-      
-      // Auto header from page title
+      homepage: 'README.md',
       autoHeader: true,
-      
-      // Sidebar depth
       subMaxLevel: 3,
       
-      // Search plugin config
       search: {
         paths: 'auto',
         placeholder: 'Search Termux-Mastery...',
         noData: 'No results found.',
         depth: 4,
       },
-    };
-
-    // Diagnostic logging
-    const originalFetch = window.fetch;
-    window.fetch = function(...args) {
-      console.log('📥 Fetching:', args[0]);
-      return originalFetch.apply(this, args)
-        .then(response => {
-          console.log(response.ok ? '✅' : '❌', args[0], '| Status:', response.status);
-          return response;
-        })
-        .catch(err => {
-          console.error('❌ Fetch error:', args[0], err);
-          throw err;
-        });
     };
   </script>
 
