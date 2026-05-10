@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+
+    <!-- This sets the character encoding so all text displays correctly -->
+    <meta charset="UTF-8" />
+
+    <!-- This makes the site look good on mobile phones -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- This is the title that appears on the browser tab -->
+    <title>Termux-Mastery</title>
+
+    <!-- This is the favicon (small icon shown on browser tab) -->
+    <link
+      rel="icon"
+      href="https://raw.githubusercontent.com/microsoft/vscode-icons/main/icons/file_type_shell.svg"
+      type="image/svg+xml"
+    />
+
+    <!-- This loads the Docsify visual theme (clean dark-friendly style) -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css"
+    />
+
+    <!-- This loads the dark mode toggle plugin stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/docsify-dark-mode@0.6.1/dist/style.min.css"
+    />
+
+  </head>
+
+  <body>
+
+    <!-- Docsify displays your site inside this div — do not remove it -->
+    <div id="app">Loading Termux-Mastery...</div>
+
+    <script>
+      // ─────────────────────────────────────────────
+      // DOCSIFY CONFIGURATION
+      // Everything here controls how your site behaves
+      // ─────────────────────────────────────────────
+      window.$docsify = {
+
+        // The name shown in the top-left corner of your site
+        name: '📱 Termux-Mastery',
+
+        // The link the site name takes you to when clicked
+        nameLink: '/',
+
+        // This tells Docsify to use your _sidebar.md file for navigation
+        loadSidebar: true,
+
+        // This tells Docsify to use your _coverpage.md as a cover page
+        coverpage: true,
+
+        // Only show the cover page on the home page, not every page
+        onlyCover: false,
+
+        // This automatically sets the page title based on the heading
+        autoHeader: true,
+
+        // How many levels deep the sidebar sub-items should show
+        subMaxLevel: 2,
+
+        // Search bar configuration — lets visitors search all your content
+        search: {
+          maxAge: 86400000,         // Cache search results for 1 day
+          paths: 'auto',            // Search all pages automatically
+          placeholder: '🔍 Search Termux-Mastery...',
+          noData: 'No results found. Try a different keyword.',
+          depth: 6,                 // How deep into headings to search
+          hideOtherSidebarContent: false,
+        },
+
+        // Dark mode plugin configuration
+        darkMode: {
+          light: {
+            toggleBtnBg: '#42b983'  // Green button in light mode
+          }
+        },
+
+        // This is the repository link shown as an edit button
+        repo: 'https://github.com/pabitra27706-oss/Termux-Mastery',
+
+        // Shows a "Back to Top" style repo corner button
+        cornerExternalLinkTarget: '_blank',
+
+        // Adds page navigation arrows (Previous / Next) at bottom
+        pagination: {
+          previousText: '← Previous',
+          nextText: 'Next →',
+          crossChapter: true,
+          crossChapterText: true,
+        },
+
+      };
+    </script>
+
+    <!-- ─────────────────────────────────────────── -->
+    <!-- DOCSIFY CORE ENGINE                         -->
+    <!-- This is what powers the entire website      -->
+    <!-- ─────────────────────────────────────────── -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+
+    <!-- PLUGIN: Search bar -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+
+    <!-- PLUGIN: Dark mode toggle button -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify-dark-mode@0.6.1/dist/index.min.js"></script>
+
+    <!-- PLUGIN: Previous / Next page navigation at the bottom -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify-pagination/dist/docsify-pagination.min.js"></script>
+
+    <!-- PLUGIN: Makes code blocks have a copy button -->
+    <script src="https://cdn.jsdelivr.net/npm/docsify-copy-code@2"></script>
+
+    <!-- PLUGIN: Syntax highlighting for code blocks (bash, python, etc.) -->
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-git.min.js"></script>
+
+  </body>
+</html>
