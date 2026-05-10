@@ -1,56 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Termux-Mastery</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
-  </head>
-  <body>
-    <div id="app"></div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termux-Mastery</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css">
+</head>
+<body>
+  <div id="app"></div>
+  
+  <script>
+    console.log('🔧 Docsify Config Loading...');
     
-    <script>
-      console.log('🔧 Docsify starting...');
-      console.log('📍 Page URL:', window.location.href);
+    window.$docsify = {
+      name: 'Termux-Mastery',
+      repo: 'https://github.com/pabitra27706-oss/Termux-Mastery',
       
-      window.$docsify = {
-        name: 'Termux-Mastery',
-        repo: 'https://github.com/pabitra27706-oss/Termux-Mastery',
-        
-        // KEY FIX: Tell Docsify files are one level up from docs/
-        basePath: '../',
-        
-        loadSidebar: true,
-        coverpage: true,
-        subMaxLevel: 2,
-        
-        search: {
-          paths: 'auto',
-          placeholder: 'Search...',
-          depth: 4,
-        },
-      };
+      // This tells Docsify to look one level up (in root folder)
+      basePath: '../',
+      
+      // Use custom sidebar
+      loadSidebar: true,
+      
+      // Use cover page
+      coverpage: true,
+      
+      // Home page is the root README.md
+      homepage: 'docs/README.md',
+      
+      // Auto header from page title
+      autoHeader: true,
+      
+      // Sidebar depth
+      subMaxLevel: 3,
+      
+      // Search plugin config
+      search: {
+        paths: 'auto',
+        placeholder: 'Search Termux-Mastery...',
+        noData: 'No results found.',
+        depth: 4,
+      },
+    };
 
-      // Log all file requests
-      const originalFetch = window.fetch;
-      window.fetch = function(...args) {
-        console.log('🌐 Trying to load:', args[0]);
-        return originalFetch.apply(this, args)
-          .then(response => {
-            if (response.ok) {
-              console.log('✅ SUCCESS:', args[0]);
-            } else {
-              console.error('❌ FAILED:', args[0], 'Status:', response.status);
-            }
-            return response;
-          });
-      };
-    </script>
+    // Diagnostic logging
+    const originalFetch = window.fetch;
+    window.fetch = function(...args) {
+      console.log('📥 Fetching:', args[0]);
+      return originalFetch.apply(this, args)
+        .then(response => {
+          console.log(response.ok ? '✅' : '❌', args[0], '| Status:', response.status);
+          return response;
+        })
+        .catch(err => {
+          console.error('❌ Fetch error:', args[0], err);
+          throw err;
+        });
+    };
+  </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
-
-  </body>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+</body>
 </html>
