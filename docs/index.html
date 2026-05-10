@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Termux-Mastery</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
-</head>
-
-<body>
-  <div id="app"></div>
-  <script>
-    window.$docsify = {
-      name: 'Termux-Mastery',
-      nameLink: '/',
-      repo: 'https://github.com/pabitra27706-oss/Termux-Mastery',
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Termux-Mastery</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/lib/themes/vue.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+    
+    <script>
+      console.log('🔧 Docsify starting...');
+      console.log('📍 Page URL:', window.location.href);
       
-      // This is the key fix
-      // It tells Docsify to load files from the root of your repository
-      basePath: 'https://raw.githubusercontent.com/pabitra27706-oss/Termux-Mastery/main/',
-      
-      loadSidebar: true,
-      coverpage: true,
-      onlyCover: false,
-      autoHeader: true,
-      subMaxLevel: 2,
-      
-      search: {
-        maxAge: 86400000,
-        paths: 'auto',
-        placeholder: 'Search Termux-Mastery...',
-        noData: 'No results found.',
-        depth: 6,
-      },
-    };
-  </script>
-  
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
-  
-</body>
+      window.$docsify = {
+        name: 'Termux-Mastery',
+        repo: 'https://github.com/pabitra27706-oss/Termux-Mastery',
+        
+        // KEY FIX: Tell Docsify files are one level up from docs/
+        basePath: '../',
+        
+        loadSidebar: true,
+        coverpage: true,
+        subMaxLevel: 2,
+        
+        search: {
+          paths: 'auto',
+          placeholder: 'Search...',
+          depth: 4,
+        },
+      };
 
+      // Log all file requests
+      const originalFetch = window.fetch;
+      window.fetch = function(...args) {
+        console.log('🌐 Trying to load:', args[0]);
+        return originalFetch.apply(this, args)
+          .then(response => {
+            if (response.ok) {
+              console.log('✅ SUCCESS:', args[0]);
+            } else {
+              console.error('❌ FAILED:', args[0], 'Status:', response.status);
+            }
+            return response;
+          });
+      };
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/plugins/search.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-python.min.js"></script>
+
+  </body>
 </html>
